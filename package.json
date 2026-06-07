@@ -18,13 +18,11 @@
     "critters": "^0.0.23",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.15.0",
-    "leaflet": "^1.9.4",
     "next": "15.1.0",
     "next-contentlayer2": "^0.5.3",
     "next-intl": "^3.26.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-leaflet": "^4.2.1",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
@@ -32,7 +30,6 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.9.14",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
