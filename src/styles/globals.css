@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-dm-sans: 'DM Sans', system-ui, sans-serif;
+  --font-dm-mono: 'DM Mono', monospace;
+
+  /* Brand colors */
+  --color-green:  #5d8910;
+  --color-yellow: #f0b804;
+  --color-cream:  #faf7f2;
+  --color-earth:  #3a5411;
+  --color-dark:   #1a2208;
+
+  /* Spacing scale */
+  --nav-height: 72px;
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-dm-sans);
+    background-color: #faf7f2;
+    color: #1a2208;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  ::selection {
+    background-color: #b8dd55;
+    color: #1a2208;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-calamansi-600 text-white font-medium rounded-full
+           hover:bg-calamansi-700 active:scale-95 transition-all duration-200 shadow-sm;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-calamansi-600 text-calamansi-700
+           font-medium rounded-full hover:bg-calamansi-50 active:scale-95 transition-all duration-200;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-terre-700 hover:text-calamansi-700
+           hover:bg-calamansi-50 rounded-lg transition-all duration-150;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-sm border border-terre-100
+           hover:shadow-md hover:-translate-y-0.5 transition-all duration-200;
+  }
+  .card-flat {
+    @apply bg-calamansi-50 rounded-2xl overflow-hidden border border-calamansi-100;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-2xs font-medium;
+  }
+  .badge-green  { @apply badge bg-calamansi-100 text-calamansi-800; }
+  .badge-yellow { @apply badge bg-citron-100 text-citron-800; }
+  .badge-earth  { @apply badge bg-terre-100 text-terre-800; }
+
+  /* Section headings */
+  .section-label {
+    @apply text-2xs font-semibold tracking-[0.2em] uppercase text-calamansi-600;
+  }
+  .section-title {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl text-terre-900 leading-tight;
+  }
+  .section-subtitle {
+    @apply text-terre-600 text-lg leading-relaxed max-w-2xl;
+  }
+
+  /* Grain overlay */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Nav */
+  .nav-link {
+    @apply text-sm font-medium text-terre-700 hover:text-calamansi-700 transition-colors px-3 py-1.5 rounded-lg hover:bg-calamansi-50;
+  }
+
+  /* Divider decorative */
+  .divider-leaf {
+    @apply flex items-center gap-4 text-calamansi-300;
+  }
+  .divider-leaf::before,
+  .divider-leaf::after {
+    content: '';
+    @apply flex-1 h-px bg-calamansi-200;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .font-display { font-family: var(--font-playfair); }
+  .font-body    { font-family: var(--font-dm-sans); }
+
+  /* Animate on scroll (add via JS IntersectionObserver) */
+  .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .animate-on-scroll.in-view { opacity: 1; transform: translateY(0); }
+}
